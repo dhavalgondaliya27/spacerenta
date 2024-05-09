@@ -2,6 +2,10 @@ import mongoose, { Schema } from 'mongoose';
 
 const propertySchema = new Schema(
   {
+    photo_tour_id: {
+      type: Schema.Types.ObjectId,
+        ref: 'PhotoTour',
+    },
     property_type: {
       type: String,
       required: true,
@@ -16,10 +20,6 @@ const propertySchema = new Schema(
     },
     description: {
       type: String,
-      required: true,
-    },
-    photos: {
-      type: [String],
       required: true,
     },
     location: {

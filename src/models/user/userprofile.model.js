@@ -2,6 +2,13 @@ import mongoose, { Schema } from "mongoose";
 
 const userprofileSchema = new Schema(
   {
+    user_id: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
+    profileImage: {
+      type: String,
+    },
     firstName: {
       type: String,
       trim: true,
@@ -52,10 +59,6 @@ const userprofileSchema = new Schema(
     },
     about_you: {
       type: String
-    },
-    user_id: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
     },
     intrest: [
       {

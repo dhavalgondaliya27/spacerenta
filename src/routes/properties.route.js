@@ -4,10 +4,14 @@ import {
   addFacility,
   createGuestSafety,
   createHouseRule,
+  photoTourforBathroom,
   createProperty,
   showOwnProperties,
+  photoTourforBedroom,
   showProperties,
   updateProperty,
+  getFacilityByType,
+  deleteProperty,
 } from '../controllers/properties.controller.js';
 import { upload } from '../middlewares/multer.middleware.js';
 
@@ -21,6 +25,10 @@ propertyRouter.route('/property/addfacility').post(addFacility);
 propertyRouter.route('/property/showproperty').get(verifyJWT, showProperties);
 propertyRouter.route('/property/showOwnProperty').get(verifyJWT, showOwnProperties);
 propertyRouter.route('/property/houserule/:id').post(verifyJWT, createHouseRule);
+propertyRouter.route('/property/getfacility').get(getFacilityByType);
 propertyRouter.route('/property/guestsafety/:id').post(verifyJWT, createGuestSafety);
+propertyRouter.route('/property/photoTourforBathroom/:id').post(verifyJWT, upload.array('photo', 5), photoTourforBathroom);
+propertyRouter.route('/property/photoTourforBedroom/:id').post(verifyJWT, upload.array('photo', 5), photoTourforBedroom);
+propertyRouter.route('/property/deleteproperty/:id').delete(verifyJWT, deleteProperty);
 
 export default propertyRouter;
